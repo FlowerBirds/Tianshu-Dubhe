@@ -6,14 +6,17 @@ name: Maven Package
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+  discussions: write
+  packages: write
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
     - uses: actions/checkout@v3
     - name: Install system dependencies
