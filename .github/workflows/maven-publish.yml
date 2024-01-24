@@ -34,10 +34,10 @@ jobs:
 
     - name: Build with Maven
       working-directory: ./Dubhe/dubhe-server
-      run: mvn -B package --file pom.xml
+      run: mvn -B -Dversion=${{ env.RELEASE_VERSION }} package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
       working-directory: ./Dubhe/dubhe-server
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn -Dversion=${{ env.RELEASE_VERSION }} deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
